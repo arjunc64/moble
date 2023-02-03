@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{%block index%}
+<h3 class="bg-info">VIEW PRODUCTS</h3>
+<div class="card-columns">
+{%for i in data%}
+<div class="card" style="width:400px">
+    <img class="card-img-top" src="{{}}" alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title">{{i.productname}}</h4>
+      <p class="card-text">Model:{{i.model}}</p>
+      <p class="card-text">Description:{{i.description}}</p>
+      <p class="card-text">Color:{{i.color}}</p>
+      <p class="card-text">Quantity:{{i.quantity}}</p>
+      <p class="card-text">Price:{{i.price}}</p>
+      <a href="{}" class="btn btn-primary">Delete</a>
+      <a href="{}" class="btn btn-primary">Update</a>
+    </div>
+  </div>
+{%endfor%}
+</div>
+{%endblock index%}
