@@ -1,0 +1,36 @@
+{%extends 'index.html'%}
+{%block index%}
+{% if messages %}
+{%for msg in messages%}
+ {%if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+<div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{msg}}</strong>
+</div>
+{%else%}
+<div class="alert alert-warning alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{msg}}</strong>
+</div>
+{%endif%}
+{%endfor%}
+{%endif%}
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <p><b>First Name :</b>{{request.user.first_name}}</p>
+                <p><b>Last Name :</b>{{request.user.last_name}}</p>
+                <p><b>Email :</b>{{request.user.email}}</p>
+                <p><b>Username :</b>{{request.user.username}}</p>
+                <p><b>Phone :</b>{{request.user.phone}}</p>
+                <p><b>Address :</b>{{request.user.address}}</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-4">
+        <p><a href="{%url 'change-password'%}" class="btn btn-success mt-3">Change Password</a></p>
+    </div>
+</div>
+{%endblock index%}

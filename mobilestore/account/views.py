@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView,CreateView,FormView
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.urls import reverse_lazy  
 from .models import User
@@ -37,11 +37,16 @@ class LoginView(FormView):
         if user:
             if user.usertype=="store":
                 login(request,user)
-                return render('storehome')
+                return redirect('storehome')
             login(request,user)
             return redirect('ushome')
         else:
-            return redirect('log')
+            return redirect('login')
+        
+class SignOut(View):
+    def get(self,request,*args,**wargs):
+        logout(request)
+        return redirect('login')
         
 class UserHome(TemplateView):
     template_name="uhome.html"         

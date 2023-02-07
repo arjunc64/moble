@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import User
 
 # Create your models here.
 
@@ -10,3 +11,5 @@ class StoreModel(models.Model):
     price=models.IntegerField()
     quantity=models.IntegerField(null=True)
     description=models.CharField(max_length=300)
+    store=models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name="storeuser")
+     
